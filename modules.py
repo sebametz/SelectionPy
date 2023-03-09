@@ -31,7 +31,7 @@ def set_working_directory(workdir=os.getcwd()):
         {os.path.join(workdir, "genes")} \
         {os.path.join(workdir, "tmp")} \
         {os.path.join(workdir, "tmp/blastdb")} \
-        {os.path.join(workdir, "tmp/RHB")} \
+        {os.path.join(workdir, "tmp/RBH")} \
         {os.path.join(workdir, "tmp/clusters")} {os.path.join(workdir, "tmp/alignments")} \
         {os.path.join(workdir, "tmp/codeml")} {os.path.join(workdir, "reports")}'
     run_cmd(cmd, "set working directory")
@@ -88,7 +88,7 @@ def run_blast(query, subject, evalue=1e-6, num_hits=1000, workdir=os.getcwd(), n
     """Run blast"""
     db = os.path.join(workdir, f"tmp/blastdb/{subject}")
     query_prot = os.path.join(workdir, f"proteomes/{query}.faa")
-    tmp = os.path.join(workdir, f"tmp/BRH/{query}_vs_{subject}.blastp")
+    tmp = os.path.join(workdir, f"tmp/RBH/{query}_vs_{subject}.blastp")
 
     cmd = f'blastp -db {db} -query {query_prot} -out {tmp} -outfmt "6 std" \
         -evalue {evalue} -num_threads {ncores} -max_target_seqs {num_hits}'
@@ -100,7 +100,7 @@ def run_blast(query, subject, evalue=1e-6, num_hits=1000, workdir=os.getcwd(), n
 
 def get_besthits(query, subject, workdir=os.getcwd()):
     """get best hit from the blast results"""
-    file = os.path.join(workdir, f"tmp/BRH/{query}_vs_{subject}.blastp")
+    file = os.path.join(workdir, f"tmp/RBH/{query}_vs_{subject}.blastp")
 
     # get best hit from results of reference vs specie
     results = pd.read_table(file, header=None, names=[
@@ -110,7 +110,7 @@ def get_besthits(query, subject, workdir=os.getcwd()):
 
     # save results in a tmp output file
 
-    out = os.path.join(workdir, f"tmp/BRH/{query}_vs_{subject}.fblastp")
+    out = os.path.join(workdir, f"tmp/RBH/{query}_vs_{subject}.fblastp")
     filter.to_csv(f"{out}", sep="\t")
 
     print(f"[{out} created] exit with code(0)")
@@ -123,10 +123,10 @@ def get_besthits(query, subject, workdir=os.getcwd()):
 def get_rbh(specie1=str(), specie2=str(), workdir=os.getcwd()):
     """Get Reciprocal Best Hits from the blast results"""
     # read files
-    tmp = os.path.join(workdir, f"tmp/BRH/{specie1}_vs_{specie2}.fblastp")
+    tmp = os.path.join(workdir, f"tmp/RBH/{specie1}_vs_{specie2}.fblastp")
     df1 = pd.read_table(tmp)
 
-    tmp = os.path.join(workdir, f"tmp/BRH/{specie2}_vs_{specie1}.fblastp")
+    tmp = os.path.join(workdir, f"tmp/RBH/{specie2}_vs_{specie1}.fblastp")
     df2 = pd.read_table(tmp)
 
     # filter only reciprocal hits
@@ -145,7 +145,7 @@ def get_rbh(specie1=str(), specie2=str(), workdir=os.getcwd()):
 def get_clusters(workdir=os.getcwd(), reference=str()):
     """Extract the different clusters"""
     # read RBH file
-    tmp = os.path.join(workdir, f"tmp/BRH/{reference}.rbh")
+    tmp = os.path.join(workdir, f"tmp/RBH/{reference}.rbh")
     file = open(tmp, "r")
     file.readline()  # ignore first line
 

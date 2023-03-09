@@ -108,7 +108,7 @@ if __name__ == '__main__':
 
     # Sort by query=clusters and save
     table_rbh = table_rbh.sort_values(by="query")
-    tmp = os.path.join(INPUT, f"tmp/BRH/{REFERENCE}.rbh")
+    tmp = os.path.join(INPUT, f"tmp/RBH/{REFERENCE}.rbh")
     table_rbh.to_csv(tmp, sep="\t", index=False)
 
     # Read RBH table get sequences and create a list to extract from transcriptome

@@ -3,7 +3,7 @@
 ----------------------------------
 
 ### About
-SelectionPy is a python application (script for now) to estimate the non-synonymous to synonymous rate ratio (dN/dS) of all protein-coding genes in a genome. SelectionPy aims to allow users to analyse dN/dS quickly and easily. 
+SelectionPy is a python application (script for now) to estimate the non-synonymous to synonymous rate ratio (dN/dS) of all protein-coding genes in a genome. SelectionPy aims to allow users to assess the dN/dS quickly and easily. The script first gets all the reciprocal best hits and aligns them with muscle. Then, it uses pal2nal to convert the alignment of proteins and the corresponding DNA (or mRNA) sequences into a codon alignment, which is necessary to estimate dN/dS with CODEML from PALM. If there are more than two genomes after the alignment, a phylogenetic tree is estimated using IQ-TREE.
 
 ### Dependencies
 - Python version > 3
