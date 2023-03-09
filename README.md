@@ -17,13 +17,26 @@ SelectionPy is a python application (script for now) to estimate the non-synonym
 
 For now, please install the dependencies manually, but I will work to solve it with a __Docker__ container.
 
-### To test it:
+### To run it:
 
-    git clone https://github.com/sebametz/SelectionPy.git
+```shell
+git clone https://github.com/sebametz/SelectionPy.git
+cd SelectionPy
+```
+Before executing script `selectionPy.py`, be sure that in your working directory, the genomes have the extension **.fasta** and the annotation **.gff**.
 
-    cd SelectionPy
+For example: 
 
-    python selectionPy.py -i test/data -r ProtA.fasta --threads 4
+/home/user/working_directory `files`:
+
+- StrainA<spam>**.fasta**</span> 
+- StrainB<spam>**.fasta**</span> 
+- StrainA<spam>**.gff**</span> 
+- StrainB<spam>**.gff**</span>
+
+```shell
+python selectionPy.py -i /home/user/working/directory -r organismsA.fasta --threads 4
+```
 
 The results of the analysis are in 
     
