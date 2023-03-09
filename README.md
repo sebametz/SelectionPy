@@ -8,7 +8,7 @@ SelectionPy is a python application (script for now) to estimate the non-synonym
 ### Dependencies
 - Python version > 3
 - Biopython
-- Python Pandas librery
+- Pandas library
 - BLAST 2.13.0+
 - Muscle version > 5
 - IQ-TREE version 1.6.12
