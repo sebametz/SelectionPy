@@ -1,6 +1,4 @@
-# SelectionPy
-
-<img src = "logo/SelectionPy2.png" alt = "SelectionPy logo" width = 150px>
+<img src = "logo/SelectionPy2.png" alt = "SelectionPy logo" width = 250px>
 
 ----------------------------------
 
