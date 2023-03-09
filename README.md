@@ -10,19 +10,27 @@ SelectionPy is a python application (script for now) to estimate the non-synonym
 - Biopython
 - Pandas library
 - BLAST 2.13.0+
-- Muscle version > 5
-- IQ-TREE version 1.6.12
+- Muscle version > 5 (be sure to name the execution file as `muscle` and add it to the `PATH`)
+- IQ-TREE version 1.6.12 (be sure to name the execution file as `iqtree` and add it to the `PATH`)
 - pal2nal
 - codeml
 
-For now, please install the dependencies manually, but I will work to solve it with a __Docker__ container.
+For now, the dependencies need a manual installation, but I'm working in a __Docker__ container.
 
-### To run it:
+### Test it
 
 ```shell
 git clone https://github.com/sebametz/SelectionPy.git
 cd SelectionPy
 ```
+```shell
+python selectionPy.py -i /home/user/Documents/SelectionPy/test -r organismsA.fasta --threads 4
+```
+
+The results of the analysis are in `./test/reports`
+
+### Run with your data
+
 Before executing script `selectionPy.py`, be sure that in your working directory, the genomes have the extension **.fasta** and the annotation **.gff**.
 
 For example: 
@@ -35,14 +43,11 @@ For example:
 - StrainB<spam>**.gff**</span>
 
 ```shell
-python selectionPy.py -i /home/user/working/directory -r organismsA.fasta --threads 4
+python selectionPy.py -i /home/user/working/directory -r strainA.fasta --threads 4
 ```
 
-The results of the analysis are in 
-    
-    /test/reports
+### To do list
 
-### To do list:
 I wrote this script in the last couple of days, so there is much to do.
 - Test with multiple genomes; I only tested it with two genomes.
 - Add analysis with KaKs_Calculator 2.0 to validate CODEML results.
@@ -50,6 +55,6 @@ I wrote this script in the last couple of days, so there is much to do.
 - Create a user interfase with Tk.
 - Create a Docker container to solve dependencies.
 
-### Contact information:
+### Contact information
 
 Sebastian Metz: seba.metz91@gmail.com
