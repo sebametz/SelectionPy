@@ -23,7 +23,7 @@ For now, please install the dependencies manually, but I will work to solve it w
 
     cd SelectionPy
 
-    python main.py -i test/data -r ProtA.fasta --threads 4
+    python selectionPy.py -i test/data -r ProtA.fasta --threads 4
 
 The results of the analysis are in 
     
